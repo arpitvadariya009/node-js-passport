@@ -1,0 +1,117 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+th {
+  background-color: #e0853b;
+  font-weight: bold;
+  text-align: center;
+  position: relative;
+}
+
+th::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #000000;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+th:hover::after {
+  transform: scaleX(1);
+}
+
+
+
+tr:hover {
+  background-color: #e4c27a;
+  cursor: pointer;
+}
+
+tr:hover td {
+  background-color: #e4c27a;
+}
+
+img {
+  display: block;
+  margin: auto;
+  max-width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+img:hover {
+  transform: scale(1.1);
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #7588f0;
+  color: #fff;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  background-color: #0056b3;
+  color: #fff;
+}
+
+
+</style>
+<table border="1">
+    <tr>
+        <th>grid</th>
+        <th>name</th>
+        <th>email</th>
+        <th>password</th>
+        <th>phone</th>
+        <th>course</th>
+        <th>fees</th>
+       <th>image</th>
+       <th>action</th>
+    </tr>
+
+<% alldata.map((val)=>{ %>
+
+        <tr>
+            <td><%=val.grid%></td>
+            <td><%=val.name%></td>
+            <td><%=val.email%></td>
+            <td><%=val.pass%></td>
+            <td><%=val.phone%></td>
+            <td><%=val.course%></td>
+            <td><%=val.fees%></td>
+            <td><img src="<%=val.avatar%>"  width="100"></td>
+            <td>
+                <a href="/deletedata/<%= val.id %>" class="button">Delete</a> ||
+                <a href="/editdata/<%= val.id %>" class="button">Edit</a>
+            </td>
+        </tr>
+<% }) %>
+
+
+
+</table>
+
+<a href="/form" class="button">add more ...</a>
